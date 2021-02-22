@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Default values for piaware.
 
 image:
@@ -43,3 +44,58 @@ additionalVolumes:
 #           operator: In
 #           values:
 #           - piaware
+=======
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from our common library chart. You can check the default values/options here:
+# https://github.com/k8s-at-home/charts/tree/master/charts/common/values.yaml
+#
+
+image:
+  repository: mikenye/piaware
+  pullPolicy: IfNotPresent
+  tag: v4.0
+
+strategy:
+  type: Recreate
+
+env: {}
+  # TZ:
+  # LAT:
+  # LONG:
+  # FEEDER_ID:
+  # BEASTHOST:
+  # BEASTPORT:
+
+service:
+  port:
+    port: 8080
+
+ingress:
+  enabled: false
+
+securityContext:
+  privileged: true
+
+# Path to your piaware device in the container
+additionalVolumeMounts:
+  - name: usb
+    mountPath: /dev/bus/usb/001/004
+
+# Path to your piaware device on the host
+additionalVolumes:
+  - name: usb
+    hostPath:
+      path: /dev/bus/usb/001/004
+
+# affinity:
+#   nodeAffinity:
+#     requiredDuringSchedulingIgnoredDuringExecution:
+#       nodeSelectorTerms:
+#       - matchExpressions:
+#         - key: app
+#           operator: In
+#           values:
+#           - piaware
+>>>>>>> upstream/master

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 apiVersion: v1
 appVersion: "1.6.12"
 description: Eclipse Mosquitto - An open source MQTT broker
@@ -15,3 +16,22 @@ sources:
 maintainers:
   - name: ishioni
     email: helm@movishell.pl
+=======
+apiVersion: v1
+appVersion: "2.0.4"
+description: Eclipse Mosquitto - An open source MQTT broker
+name: mosquitto
+version: 0.7.0
+keywords:
+  - message queue
+  - MQTT
+  - mosquitto
+  - eclipse-iot
+home: https://mosquitto.org/
+icon: https://mosquitto.org/images/mosquitto-text-side-28.png
+sources:
+  - https://github.com/eclipse/mosquitto
+maintainers:
+  - name: ishioni
+    email: helm@movishell.pl
+>>>>>>> upstream/master

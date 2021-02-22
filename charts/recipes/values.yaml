@@ -1,0 +1,97 @@
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from our common library chart. You can check the default values/options here:
+# https://github.com/k8s-at-home/charts/tree/master/charts/common/values.yaml
+#
+
+image:
+  repository: vabene1111/recipes
+  pullPolicy: IfNotPresent
+  tag: 0.13.0
+
+strategy:
+  type: Recreate
+
+env:
+  DEBUG: "0"
+  ALLOWED_HOSTS: "*"
+  SECRET_KEY: changeme
+  DB_ENGINE: django.db.backends.sqlite3
+  POSTGRES_HOST:
+  POSTGRES_PORT:
+  POSTGRES_USER:
+  POSTGRES_DB:
+  POSTGRES_PASSWORD:
+  GUNICORN_MEDIA: "0"
+  TIMEZONE: America/New_York
+  FRACTION_PREF_DEFAULT: "0"
+  COMMENT_PREF_DEFAULT: "1"
+  SHOPPING_MIN_AUTOSYNC_INTERVAL: "5"
+
+service:
+  port:
+    port: 80
+
+ingress:
+  enabled: false
+
+persistence:
+  config:
+    enabled: false
+  media:
+    enabled: false
+    emptyDir: false
+    mountPath: /opt/recipes/mediafiles
+    ## Persistent Volume Storage Class
+    ## If defined, storageClassName: <storageClass>
+    ## If set to "-", storageClassName: "", which disables dynamic provisioning
+    ## If undefined (the default) or set to null, no storageClassName spec is
+    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+    ##   GKE, AWS & OpenStack)
+    # storageClass: "-"
+    # accessMode: ReadWriteOnce
+    # size: 1Gi
+    ## Do not delete the pvc upon helm uninstall
+    # skipuninstall: false
+    # existingClaim: ""
+  static:
+    enabled: false
+    emptyDir: false
+    mountPath: /opt/recipes/staticfiles
+    ## Persistent Volume Storage Class
+    ## If defined, storageClassName: <storageClass>
+    ## If set to "-", storageClassName: "", which disables dynamic provisioning
+    ## If undefined (the default) or set to null, no storageClassName spec is
+    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+    ##   GKE, AWS & OpenStack)
+    # storageClass: "-"
+    # accessMode: ReadWriteOnce
+    # size: 1Gi
+    ## Do not delete the pvc upon helm uninstall
+    # skipuninstall: false
+    # existingClaim: ""
+
+additionalVolumes:
+- name: recipes-config
+  configMap:
+    name: recipes-config
+
+additionalContainers:
+- name: nginx
+  image: nginx:1.19.6
+  ports:
+    - containerPort: 80
+      name: http
+  volumeMounts:
+  ##
+  ## If persistent volumes are enabled ; please uncomment the following lines
+  ##
+  # - name: media
+  #   mountPath: '/media'
+  # - name: static
+  #   mountPath: '/static'
+  - name: recipes-config
+    mountPath: /etc/nginx/nginx.conf
+    subPath: nginx-config
+    readOnly: true

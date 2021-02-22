@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 apiVersion: v2
 name: lazylibrarian
 description: A Helm chart for deploying LazyLibrarian
@@ -14,3 +15,26 @@ sources:
 maintainers:
   - name: billimek
     email: jeff@billimek.com
+=======
+apiVersion: v2
+appVersion: 1.7.2
+name: lazylibrarian
+description: A Helm chart for deploying LazyLibrarian
+version: 4.0.1
+kubeVersion: ">=1.16.0-0"
+keywords:
+- lazylibrarian
+- ebooks
+home: https://github.com/k8s-at-home/charts/lazylibrarian
+icon: https://lazylibrarian.gitlab.io/logo.svg
+sources:
+- https://gitlab.com/LazyLibrarian/LazyLibrarian.git
+- https://lazylibrarian.gitlab.io
+maintainers:
+- name: billimek
+  email: jeff@billimek.com
+dependencies:
+- name: common
+  repository: https://k8s-at-home.com/charts/
+  version: 3.0.1
+>>>>>>> upstream/master

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Default values for lazylibrarian.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
@@ -151,3 +152,56 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+=======
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from our common library chart. You can check the default values/options here:
+# https://github.com/k8s-at-home/charts/tree/master/charts/common/values.yaml
+#
+
+image:
+  repository: linuxserver/lazylibrarian
+  pullPolicy: IfNotPresent
+  tag: version-047f91af
+
+strategy:
+  type: Recreate
+
+env: {}
+  # TZ: UTC
+  # PUID: 1001
+  # PGID: 1001
+  ## Docker Mods are not actively tested and might not work as expected.
+  # DOCKER_MODS=linuxserver/mods:lazylibrarian-ffmpeg
+  # DOCKER_MODS=linuxserver/calibre-web:calibre
+
+service:
+  port:
+    port: 5299
+
+ingress:
+  enabled: false
+
+persistence:
+  config:
+    enabled: false
+    emptyDir: false
+
+  media:
+    enabled: false
+    emptyDir: false
+    mountPath: /media
+    ## Persistent Volume Storage Class
+    ## If defined, storageClassName: <storageClass>
+    ## If set to "-", storageClassName: "", which disables dynamic provisioning
+    ## If undefined (the default) or set to null, no storageClassName spec is
+    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+    ##   GKE, AWS & OpenStack)
+    # storageClass: "-"
+    # accessMode: ReadWriteOnce
+    # size: 1Gi
+    ## Do not delete the pvc upon helm uninstall
+    # skipuninstall: false
+    # existingClaim: ""
+>>>>>>> upstream/master

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 apiVersion: v2
 name: common
 description: Function library for k8s-at-home charts
@@ -10,3 +11,18 @@ home: https://github.com/k8s-at-home/charts/tree/master/charts/common
 maintainers:
   - name: bjw-s
     email: me@bjw-s.dev
+=======
+apiVersion: v2
+name: common
+description: Function library for k8s-at-home charts
+type: library
+version: 3.0.1
+kubeVersion: ">=1.16.0-0"
+keywords:
+- k8s-at-home
+- common
+home: https://github.com/k8s-at-home/charts/tree/master/charts/common
+maintainers:
+- name: bjw-s
+  email: me@bjw-s.dev
+>>>>>>> upstream/master

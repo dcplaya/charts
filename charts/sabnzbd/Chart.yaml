@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 apiVersion: v2
 appVersion: 3.1.0
 description: Free and easy binary newsreader
@@ -18,3 +19,26 @@ dependencies:
   - name: common
     repository: https://k8s-at-home.com/charts/
     version: 2.1.1
+=======
+apiVersion: v2
+appVersion: 3.1.0
+description: Free and easy binary newsreader
+name: sabnzbd
+version: 5.0.1
+kubeVersion: ">=1.16.0-0"
+keywords:
+- sabnzbd
+- usenet
+home: https://github.com/k8s-at-home/charts/tree/master/charts/sabnzbd
+icon: https://avatars1.githubusercontent.com/u/960698?s=400&v=4
+sources:
+- https://hub.docker.com/r/linuxserver/sabnzbd/
+- https://sabnzbd.org/
+maintainers:
+- name: billimek
+  email: jeff@billimek.com
+dependencies:
+- name: common
+  repository: https://k8s-at-home.com/charts/
+  version: 3.0.1
+>>>>>>> upstream/master

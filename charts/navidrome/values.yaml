@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Default values for Navidrome.
 
 image:
@@ -54,3 +55,69 @@ persistence:
     ## Do not delete the pvc upon helm uninstall
     # skipuninstall: false
     # existingClaim: ""
+=======
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from our common library chart. You can check the default values/options here:
+# https://github.com/k8s-at-home/charts/tree/master/charts/common/values.yaml
+#
+
+image:
+  repository: deluan/navidrome
+  pullPolicy: IfNotPresent
+  tag: 0.39.0
+
+strategy:
+  type: Recreate
+
+env:
+  ND_SCANINTERVAL: 15m
+  ND_LOGLEVEL: info
+  ND_SESSIONTIMEOUT: 24h
+  ND_ENABLETRANSCODINGCONFIG: "true"
+  ND_MUSICFOLDER: /music
+
+service:
+  port:
+    port: 4533
+
+ingress:
+  enabled: false
+
+persistence:
+  config:
+    enabled: false
+    emptyDir: false
+    mountPath: /data
+    accessMode: ReadWriteOnce
+    ## Persistent Volume Storage Class
+    ## If defined, storageClassName: <storageClass>
+    ## If set to "-", storageClassName: "", which disables dynamic provisioning
+    ## If undefined (the default) or set to null, no storageClassName spec is
+    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+    ##   GKE, AWS & OpenStack)
+    # storageClass: "-"
+    # accessMode: ReadWriteOnce
+    # size: 1Gi
+    ## Do not delete the pvc upon helm uninstall
+    # skipuninstall: false
+    # existingClaim: ""
+  music:
+    enabled: false
+    emptyDir: false
+    mountPath: /music
+    accessMode: ReadWriteOnce
+    ## Persistent Volume Storage Class
+    ## If defined, storageClassName: <storageClass>
+    ## If set to "-", storageClassName: "", which disables dynamic provisioning
+    ## If undefined (the default) or set to null, no storageClassName spec is
+    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+    ##   GKE, AWS & OpenStack)
+    # storageClass: "-"
+    # accessMode: ReadWriteOnce
+    # size: 1Gi
+    ## Do not delete the pvc upon helm uninstall
+    # skipuninstall: false
+    # existingClaim: ""
+>>>>>>> upstream/master

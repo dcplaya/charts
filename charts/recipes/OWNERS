@@ -1,0 +1,11 @@
+<<<<<<< HEAD:charts/frigate/OWNERS
+approvers:
+- billimek
+reviewers:
+- billimek
+=======
+approvers:
+- auricom
+reviewers:
+- auricom
+>>>>>>> upstream/master:charts/recipes/OWNERS

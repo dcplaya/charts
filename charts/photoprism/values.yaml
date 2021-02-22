@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Default values for PhotoPrism.
 
 image:
@@ -51,3 +52,66 @@ persistence:
   # - name: originals
   #   persistentVolumeClaim:
   #     claimName: nfs-pictures-pvc
+=======
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from our common library chart. You can check the default values/options here:
+# https://github.com/k8s-at-home/charts/tree/master/charts/common/values.yaml
+#
+
+image:
+  repository: photoprism/photoprism
+  pullPolicy: IfNotPresent
+  tag: "20201122"
+
+strategy:
+  type: Recreate
+
+env:
+  PHOTOPRISM_STORAGE_PATH: /photoprism/storage
+  PHOTOPRISM_ORIGINALS_PATH: /photoprism/originals
+  ## See other config options from PhotoPrism documentation: https://docs.photoprism.org/getting-started/config-options/
+  # PHOTOPRISM_ADMIN_PASSWORD: "please-change"     # Initial admin password: PLEASE CHANGE!
+  # PHOTOPRISM_DEBUG: "false"                      # Run in debug mode (shows additional log messages)
+  # PHOTOPRISM_PUBLIC: "false"                     # No authentication required (disables password protection)
+  # PHOTOPRISM_READONLY: "false"                   # Don't modify originals directory (reduced functionality)
+  # PHOTOPRISM_EXPERIMENTAL: "false"               # Enable experimental features
+  # PHOTOPRISM_SITE_URL: "http://localhost:2342/"  # Canonical / public site URL
+  # PHOTOPRISM_SITE_TITLE: "PhotoPrism"
+  # PHOTOPRISM_SITE_CAPTION: "Browse Your Life"
+  # PHOTOPRISM_SITE_DESCRIPTION: ""
+  # PHOTOPRISM_SITE_AUTHOR: ""
+  # # You may optionally set user, group and/or file permissions using environment variables:
+  # UID: 1000
+  # GID: 1000
+  # UMASK: 0000
+
+service:
+  port:
+    port: 2342
+
+ingress:
+  enabled: false
+
+persistence:
+  config:
+    enabled: false
+    emptyDir: false
+    mountPath: /photoprism/storage
+
+  originals:
+    enabled: false
+    emptyDir: false
+    mountPath: "/photoprism/originals"
+    # readOnly: true
+
+  # additionalVolumeMounts:
+  # - name: originals
+  #   mountPath: "/photoprism/originals"
+  #   readOnly: true
+  # additionalVolumes:
+  # - name: originals
+  #   persistentVolumeClaim:
+  #     claimName: nfs-pictures-pvc
+>>>>>>> upstream/master

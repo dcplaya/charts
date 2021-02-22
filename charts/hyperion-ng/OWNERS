@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 approvers:
 - billimek
 - onedr0p
@@ -6,3 +7,13 @@ reviewers:
 - billimek
 - onedr0p
 - bjw-s
+=======
+approvers:
+- billimek
+- onedr0p
+- bjw-s
+reviewers:
+- billimek
+- onedr0p
+- bjw-s
+>>>>>>> upstream/master

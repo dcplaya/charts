@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Default values for Ombi.
 
 image:
@@ -34,3 +35,36 @@ mariadb:
   primary:
     persistence:
       enabled: false
+=======
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from our common library chart. You can check the default values/options here:
+# https://github.com/k8s-at-home/charts/tree/master/charts/common/values.yaml
+#
+
+image:
+  repository: linuxserver/ombi
+  pullPolicy: IfNotPresent
+  tag: version-v4.0.681
+
+strategy:
+  type: Recreate
+
+env: {}
+  # TZ: UTC
+  # PUID: 1001
+  # PGID: 1001
+
+service:
+  port:
+    port: 3579
+
+ingress:
+  enabled: false
+
+persistence:
+  config:
+    enabled: false
+    emptyDir: false
+>>>>>>> upstream/master

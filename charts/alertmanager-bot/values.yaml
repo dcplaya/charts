@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Default values for alertmanager-bot.
 
 image:
@@ -24,3 +25,39 @@ persistence:
   data:
     enabled: false
     emptyDir: false
+=======
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from our common library chart. You can check the default values/options here:
+# https://github.com/k8s-at-home/charts/tree/master/charts/common/values.yaml
+#
+
+image:
+  repository: metalmatze/alertmanager-bot
+  pullPolicy: IfNotPresent
+  tag: 0.4.2
+
+strategy:
+  type: Recreate
+
+# See more environment varaibles in the alertmanager-botdocumentation
+# https://github.com/metalmatze/alertmanager-bot
+env:
+  STORE: bolt
+  BOLT_PATH: /data/bot.db
+  # ALERTMANAGER_URL:
+  # TELEGRAM_ADMIN:
+  # TELEGRAM_TOKEN:
+
+service:
+  enabled: false
+
+ingress:
+  enabled: false
+
+persistence:
+  data:
+    enabled: false
+    emptyDir: false
+>>>>>>> upstream/master

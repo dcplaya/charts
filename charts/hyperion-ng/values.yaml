@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Default values for hyperion-ng.
 
 image:
@@ -35,3 +36,50 @@ persistence:
     enabled: false
     emptyDir: false
     mountPath: /root/.hyperion
+=======
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from our common library chart. You can check the default values/options here:
+# https://github.com/k8s-at-home/charts/tree/master/charts/common/values.yaml
+#
+
+image:
+  repository: sirfragalot/hyperion.ng
+  pullPolicy: IfNotPresent
+  tag: 2.0.0-alpha.9-x86_64
+
+strategy:
+  type: Recreate
+
+env: {}
+  # TZ: UTC
+  # PUID: 1001
+  # PGID: 1001
+
+service:
+  port:
+    port: 8090
+  additionalPorts:
+  - port: 19444
+    name: jsonservice
+    protocol: TCP
+    targetPort: 19444
+  - port: 19445
+    name: protobufservice
+    protocol: TCP
+    targetPort: 19445
+  - port: 19333
+    name: boblightservice
+    protocol: TCP
+    targetPort: 19333
+
+ingress:
+  enabled: false
+
+persistence:
+  config:
+    enabled: false
+    emptyDir: false
+    mountPath: /root/.hyperion
+>>>>>>> upstream/master

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -18,3 +19,18 @@ data:
   {{ $name }}: |-
 {{ $value | indent 4}}
 {{- end }}
+=======
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "blocky.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/name: {{ include "blocky.name" . }}
+    helm.sh/chart: {{ include "blocky.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+data:
+  config.yml: |
+{{ .Values.config | indent 4 }}
+>>>>>>> upstream/master
